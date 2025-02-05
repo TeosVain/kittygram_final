@@ -11,18 +11,18 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
   backend:
-    build: ./backend/
+    image: teosvain/kittygram_backend
     env_file: .env.example
     volumes:
       - static:/static
   frontend:
     env_file: .env.example
-    build: ./frontend/
+    image: teosvain/kittygram_frontend
     command: cp -r /app/build/. /static/
     volumes:
       - static:/static
   gateway:
-    build: ./nginx/
+    image: teosvain/kittygram_gateway
     env_file: .env.example
     ports:
       - 9000:80
