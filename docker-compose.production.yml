@@ -18,13 +18,13 @@ services:
       - db
     volumes:
       - static:/static
+      - media:/app/media
   frontend:
     env_file: .env
     image: teosvain/kittygram_frontend
     command: cp -r /app/build/. /static/
     volumes:
       - static:/static
-      - media:/app/media
   gateway:
     image: teosvain/kittygram_gateway
     env_file: .env
